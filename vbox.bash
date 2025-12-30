@@ -23,7 +23,7 @@ sudo apt install -y openssh-server
 
 echo "--- Configuring SSH to allow password authentication ---"
 sudo cp -p /etc/ssh/sshd_config /etc/ssh/sshd_config.bak-${CURRENT_DATE}
-sudo sed -i '/PasswordAuthentication[[:space:]]+(no|yes)/c\PasswordAuthentication yes' /etc/ssh/sshd_config
+sudo sed -Ei '/PasswordAuthentication[[:space:]]+(no|yes)/c\PasswordAuthentication yes' /etc/ssh/sshd_config
 diff -u /etc/ssh/sshd_config.bak-${CURRENT_DATE} /etc/ssh/sshd_config || true
 
 echo "--- Enabling and starting SSH service ---"
