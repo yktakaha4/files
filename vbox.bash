@@ -9,7 +9,7 @@ cat <<EOF
 This script will perform the following actions:
 1. Install and configure OpenSSH Server.
 2. Configure network interfaces using netplan with the following settings:
-   - Interface enp0s8: DHCP enabled, static IP ${IP_ADDRESS}/32
+   - Interface enp0s8: DHCP enabled, static IP ${IP_ADDRESS}/24
 3. Enable and start the SSH service.
 
 Manual is here: https://zenn.dev/yktakaha4/articles/vbox_ssh_one_liner
@@ -39,7 +39,7 @@ network:
     enp0s8:
       dhcp4: true
       addresses:
-      - ${IP_ADDRESS}/32
+      - ${IP_ADDRESS}/24
     enp0s9:
       dhcp4: yes
       nameservers:
