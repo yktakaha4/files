@@ -29,7 +29,7 @@ diff -u /etc/ssh/sshd_config.bak-${CURRENT_DATE} /etc/ssh/sshd_config || true
 echo "--- Enabling and starting SSH service ---"
 sudo systemctl enable ssh
 sudo systemctl restart ssh
-sudo systemctl status ssh --no-pager
+sudo systemctl status ssh --no-pager || true
 
 echo "--- Configuring network interfaces with netplan ---"
 sudo tee /etc/netplan/90-vbox.yaml <<EOF
