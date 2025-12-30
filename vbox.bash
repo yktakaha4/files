@@ -11,9 +11,9 @@ This script will perform the following actions:
 2. Configure network interfaces using netplan with the following settings:
    - Interface enp0s8: DHCP enabled, static IP ${IP_ADDRESS}/24
 3. Enable and start the SSH service.
-EOF
 
-read -r -p "Type y/yes to continue: " answer; [[ ${answer,,} =~ ^y(es)?$ ]] || { echo "aborted" >&2; exit 1; }
+Manual is here: https://zenn.dev/link/comments/c1c9ae026cdece
+EOF
 
 echo "--- Updating package lists ---"
 sudo apt update
