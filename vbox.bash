@@ -12,7 +12,7 @@ This script will perform the following actions:
    - Interface enp0s8: DHCP enabled, static IP ${IP_ADDRESS}/24
 3. Enable and start the SSH service.
 
-Manual is here: https://zenn.dev/link/comments/c1c9ae026cdece
+Manual is here: https://zenn.dev/yktakaha4/articles/vbox_ssh_one_liner
 EOF
 
 echo "--- Updating package lists ---"
