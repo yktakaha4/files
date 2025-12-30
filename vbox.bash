@@ -22,16 +22,17 @@ echo "--- Installing OpenSSH Server ---"
 sudo apt install -y openssh-server
 
 echo "--- Configuring SSH to allow password authentication ---"
-sudo cp -p /etc/ssh/sshd_config /etc/ssh/sshd_config.bak-${CURRENT_DATE}
+sudo cp -vp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak-${CURRENT_DATE}
 sudo sed -Ei '/PasswordAuthentication[[:space:]]+(no|yes)/c\PasswordAuthentication yes' /etc/ssh/sshd_config
 diff -u /etc/ssh/sshd_config.bak-${CURRENT_DATE} /etc/ssh/sshd_config || true
 
 echo "--- Enabling and starting SSH service ---"
 sudo systemctl enable ssh
 sudo systemctl restart ssh
+sudo systemctl status ssh --no-pager
 
 echo "--- Configuring network interfaces with netplan ---"
-sudo tee /etc/netplan/90-vbox.yaml > /dev/null <<EOF
+sudo tee /etc/netplan/90-vbox.yaml <<EOF
 network:
   version: 2
   ethernets:
@@ -45,9 +46,11 @@ network:
         addresses: [8.8.8.8, 8.8.4.4]
 EOF
 sudo chmod 0600 /etc/netplan/90-vbox.yaml
+ls -l /etc/netplan/
 
 echo "--- Applying netplan configuration ---"
 sudo netplan apply
+sudo netplan status
 
 echo "--- Setup complete ---"
 
