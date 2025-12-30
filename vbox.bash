@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-IP_ADDRESS="${1:-192.168.56.10}"
+IP_ADDRESS="${IP_ADDRESS:-192.168.56.10}"
 CURRENT_DATE=$(date +%Y%m%d-%H%M%S)
 
 cat <<EOF
